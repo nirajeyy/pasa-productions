@@ -66,7 +66,7 @@ export const projects: Project[] = [
     title: "Nike - Just Do It Campaign",
     description: "A high-energy commercial showcasing athletes pushing their limits, featuring stunning slow-motion cinematography and dynamic editing.",
     date: "2024-03-20",
-    youtubeUrl: "https://www.youtube.com/embed/example1",
+    youtubeUrl: "https://www.youtube.com/embed/b0Ezn5pZE7o?si=1wcUgrn68rhXAZ4T",
     published: true,
     category: "Commercial",
     client: "Nike",
