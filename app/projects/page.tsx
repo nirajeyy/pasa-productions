@@ -1,128 +1,98 @@
+import { Suspense } from "react";
 import Link from "next/link";
-import React from "react";
-import { Navigation } from "../components/nav";
-import { Card } from "../components/card";
-import { Article } from "./article";
-import { projects } from "../data/projects";
+import { getProjectsByPage } from "../../lib/projects";
+import SearchBar from "../../components/SearchBar";
+import CategoryFilter from "../../components/CategoryFilter";
+import ProjectCard from "../../components/ProjectCard";
 
-export default function ProjectsPage() {
-  const featured = projects.find((project) => project.slug === "showdown")!;
-  const top2 = projects.find((project) => project.slug === "ocean-documentary")!;
-  const top3 = projects.find((project) => project.slug === "short-film-memory")!;
-  const sorted = projects
-    .filter((p) => p.published)
-    .filter(
-      (project) =>
-        project.slug !== featured.slug &&
-        project.slug !== top2.slug &&
-        project.slug !== top3.slug,
-    )
-    .sort(
-      (a, b) =>
-        new Date(b.date).getTime() -
-        new Date(a.date).getTime(),
-    );
+const categories = [
+  "Commercial",
+  "Documentary",
+  "Short Film",
+  "TV Show",
+  "Music Video",
+];
+
+interface ProjectsPageProps {
+  searchParams: {
+    search?: string;
+    category?: string;
+    page?: string;
+  };
+}
+
+export default async function ProjectsPage({ searchParams }: ProjectsPageProps) {
+  const { search = "", category = "", page = "1" } = searchParams;
+  const currentPage = parseInt(page);
+  const { projects, totalPages } = await getProjectsByPage(currentPage, search, category);
 
   return (
-    <div className="relative pb-16">
-      <Navigation />
-      <div className="px-6 pt-20 mx-auto space-y-8 max-w-7xl lg:px-8 md:space-y-16 md:pt-24 lg:pt-32">
-        <div className="max-w-2xl mx-auto lg:mx-0">
-          <h2 className="text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl">
-            Projects
-          </h2>
-          <p className="mt-4 text-zinc-400">
-            A showcase of our video production work, from commercials to documentaries and short films.
-          </p>
+    <div className="min-h-screen bg-gradient-to-tl from-black via-zinc-600/20 to-black">
+      <div className="max-w-7xl mx-auto px-10">
+        <Link
+          href="/"
+          className="inline-flex items-center text-sm text-zinc-400 hover:text-white mb-8 group mt-10"
+        >
+          <svg
+            className="w-4 h-4 mr-2 transform group-hover:-translate-x-1 transition-transform"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
+          Back to Home
+        </Link>
+
+        <div className="text-center mb-16">
+          <h1 className="text-4xl font-bold text-white mb-4 font-display">Our Projects</h1>
+          <div className="w-24 h-1 bg-gradient-to-r from-amber-500/70 to-orange-500/70 mx-auto" />
         </div>
-        <div className="w-full h-px bg-zinc-800" />
 
-        <div className="grid grid-cols-1 gap-8 mx-auto lg:grid-cols-2 ">
-          <Card>
-            <Link href={`/projects/${featured.slug}`}>
-              <article className="relative w-full h-full p-4 md:p-8">
-                <div className="flex items-center justify-between gap-2">
-                  <div className="text-xs text-zinc-100">
-                    <time dateTime={new Date(featured.date).toISOString()}>
-                      {Intl.DateTimeFormat(undefined, {
-                        dateStyle: "medium",
-                      }).format(new Date(featured.date))}
-                    </time>
-                  </div>
-                  <span className="px-3 py-1 text-xs bg-zinc-800 text-zinc-200 rounded-full">
-                    {featured.category}
-                  </span>
-                </div>
+        <div className="mb-8 flex flex-col md:flex-row gap-4 justify-between items-start md:items-center">
+          <SearchBar />
+          <CategoryFilter categories={categories} />
+        </div>
 
-                <h2
-                  id="featured-post"
-                  className="mt-4 text-3xl font-bold text-zinc-100 group-hover:text-white sm:text-4xl font-display"
-                >
-                  {featured.title}
-                </h2>
-                <p className="mt-4 leading-8 duration-150 text-zinc-400 group-hover:text-zinc-300">
-                  {featured.description}
-                </p>
-                {featured.youtubeUrl && (
-                  <div className="mt-4 aspect-video">
-                    <iframe
-                      src={featured.youtubeUrl}
-                      title={featured.title}
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                      className="w-full h-full rounded-lg"
-                    />
-                  </div>
-                )}
-                <div className="absolute bottom-4 md:bottom-8">
-                  <p className="hidden text-zinc-200 hover:text-zinc-50 lg:block">
-                    Read more <span aria-hidden="true">&rarr;</span>
-                  </p>
-                </div>
-              </article>
-            </Link>
-          </Card>
-
-          <div className="flex flex-col w-full gap-8 mx-auto border-t border-gray-900/10 lg:mx-0 lg:border-t-0 ">
-            {[top2, top3].map((project) => (
-              <Card key={project.slug}>
-                <Article project={project} />
-              </Card>
+        <Suspense fallback={<div>Loading projects...</div>}>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {projects.map((project) => (
+              <ProjectCard key={project.slug} project={project} />
             ))}
           </div>
-        </div>
-        <div className="hidden w-full h-px md:block bg-zinc-800" />
 
-        <div className="grid grid-cols-1 gap-4 mx-auto lg:mx-0 md:grid-cols-3">
-          <div className="grid grid-cols-1 gap-4">
-            {sorted
-              .filter((_, i) => i % 3 === 0)
-              .map((project) => (
-                <Card key={project.slug}>
-                  <Article project={project} />
-                </Card>
+          {projects.length === 0 && (
+            <div className="text-center py-16">
+              <p className="text-zinc-400">No projects found matching your criteria.</p>
+            </div>
+          )}
+
+          {totalPages > 1 && (
+            <div className="mt-12 flex justify-center gap-4">
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => (
+                <a
+                  key={pageNum}
+                  href={`/projects?page=${pageNum}${search ? `&search=${search}` : ""}${
+                    category ? `&category=${category}` : ""
+                  }`}
+                  className={`px-4 py-2 rounded-lg ${
+                    pageNum === currentPage
+                      ? "bg-amber-500/90 text-black"
+                      : "bg-zinc-900/50 text-zinc-400 hover:bg-zinc-800/50"
+                  }`}
+                >
+                  {pageNum}
+                </a>
               ))}
-          </div>
-          <div className="grid grid-cols-1 gap-4">
-            {sorted
-              .filter((_, i) => i % 3 === 1)
-              .map((project) => (
-                <Card key={project.slug}>
-                  <Article project={project} />
-                </Card>
-              ))}
-          </div>
-          <div className="grid grid-cols-1 gap-4">
-            {sorted
-              .filter((_, i) => i % 3 === 2)
-              .map((project) => (
-                <Card key={project.slug}>
-                  <Article project={project} />
-                </Card>
-              ))}
-          </div>
-        </div>
+            </div>
+          )}
+        </Suspense>
       </div>
     </div>
   );
-}
+} 

@@ -10,22 +10,6 @@ export const metadata: Metadata = {
     template: "%s | pasaproductions.com",
   },
   description: "A production house",
-  openGraph: {
-    title: "chronark.com",
-    description:
-      "Co-founder of unkey.dev and founder of planetfall.io",
-    url: "https://chronark.com",
-    siteName: "chronark.com",
-    images: [
-      {
-        url: "https://chronark.com/og.png",
-        width: 1920,
-        height: 1080,
-      },
-    ],
-    locale: "en-US",
-    type: "website",
-  },
   robots: {
     index: true,
     follow: true,

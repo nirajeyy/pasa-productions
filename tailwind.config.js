@@ -41,6 +41,7 @@ module.exports = {
 				title: "title 3s ease-out forwards",
 				"fade-left": "fade-left 3s ease-in-out forwards",
 				"fade-right": "fade-right 3s ease-in-out forwards",
+				"scroll": "scroll 30s linear infinite",
 			},
 			keyframes: {
 				"fade-in": {
@@ -99,6 +100,14 @@ module.exports = {
 					"100%": {
 						"line-height": "100%",
 						opacity: "100%",
+					},
+				},
+				"scroll": {
+					"0%": {
+						transform: "translateX(0)",
+					},
+					"100%": {
+						transform: "translateX(calc(-50% - 1rem))",
 					},
 				},
 			},

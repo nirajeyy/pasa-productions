@@ -1,18 +1,20 @@
 import Link from "next/link";
 import React from "react";
 import Particles from "./components/particles";
-import { projects } from "./data/projects";
+import { getAllProjects } from "../lib/projects";
+import FeaturedProjects from "../components/FeaturedProjects";
+import { Project } from "../types";
 
 const navigation = [
   { name: "Projects", href: "/projects" },
   { name: "Contact", href: "/contact" },
 ];
 
-export default function Home() {
-  const featuredProjects = projects
-    .filter((project) => project.published)
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-    .slice(0, 2);
+export default async function Home() {
+  const allProjects = await getAllProjects();
+  const featuredProjects = allProjects
+    .filter((project: Project) => project.featured)
+    .sort((a: Project, b: Project) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return (
     <div className="relative min-h-screen bg-gradient-to-tl from-black via-zinc-600/20 to-black">
@@ -42,8 +44,8 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/50" />
-        <div className="hidden w-screen h-px animate-glow md:block animate-fade-left bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0" />
+        {/* <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/50" /> */}
+        {/* <div className="hidden w-screen h-px animate-glow md:block animate-fade-left bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0" /> */}
         <div className="relative z-10 text-center">
           <h1 className="py-3.5 px-0.5 z-10 text-4xl duration-1000 cursor-default animate-title font-display sm:text-6xl md:text-9xl whitespace-nowrap">
             <span className="text-transparent bg-gradient-to-r from-amber-500/90 via-orange-500/90 to-amber-500/90 bg-clip-text">pasa</span>{" "}
@@ -83,7 +85,7 @@ export default function Home() {
                 title: "Music Videos",
                 description: "Professional content that elevates your brand",
               },
-            ].map((service, index) => (
+            ].map((service) => (
               <div
                 key={service.title}
                 className="group p-8 bg-zinc-900/50 backdrop-blur-sm rounded-lg border border-zinc-800 hover:border-zinc-700 transition-all duration-300 hover:transform hover:-translate-y-1"
@@ -108,40 +110,7 @@ export default function Home() {
             <h2 className="text-4xl font-bold text-white mb-4 font-display">Featured Work</h2>
             <div className="w-24 h-1 bg-gradient-to-r from-amber-500/70 to-orange-500/70 mx-auto" />
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {featuredProjects.map((project) => (
-              <Link
-                key={project.slug}
-                href={`/projects/${project.slug}`}
-                className="group relative overflow-hidden rounded-lg bg-zinc-900/50 backdrop-blur-sm border border-zinc-800 hover:border-zinc-700 transition-all duration-300 hover:transform hover:-translate-y-1"
-              >
-                <div className="aspect-video relative">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent z-10" />
-                  {project.youtubeUrl && (
-                    <iframe
-                      src={project.youtubeUrl}
-                      title={project.title}
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                      className="w-full h-full object-cover"
-                    />
-                  )}
-                </div>
-                <div className="p-8">
-                  <div className="flex items-center justify-between gap-2 mb-3">
-                    <span className="text-sm text-amber-500/90">{project.category}</span>
-                    <time className="text-sm text-zinc-400">
-                      {Intl.DateTimeFormat(undefined, {
-                        dateStyle: "medium",
-                      }).format(new Date(project.date))}
-                    </time>
-                  </div>
-                  <h3 className="text-2xl font-semibold text-white mb-3 group-hover:text-amber-500/90 transition-colors">{project.title}</h3>
-                  <p className="text-zinc-400">{project.description}</p>
-                </div>
-              </Link>
-            ))}
-          </div>
+          <FeaturedProjects projects={featuredProjects} />
         </div>
       </section>
 
