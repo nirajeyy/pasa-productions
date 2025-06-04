@@ -4,10 +4,19 @@ import Particles from "./components/particles";
 import { getAllProjects } from "../lib/projects";
 import FeaturedProjects from "../components/FeaturedProjects";
 import { Project } from "../types";
+import { Award, Clock, Star, Users } from "lucide-react";
+import StatsCounter from "../components/StatsCounter";
 
 const navigation = [
   { name: "Projects", href: "/projects" },
   { name: "Contact", href: "/contact" },
+];
+
+const stats = [
+  { iconName: "Award" as const, label: "Awards Won", value: 25, suffix: "+" },
+  { iconName: "Users" as const, label: "Happy Clients", value: 150, suffix: "+" },
+  { iconName: "Clock" as const, label: "Years Experience", value: 8, suffix: "+" },
+  { iconName: "Star" as const, label: "Projects Completed", value: 300, suffix: "+" },
 ];
 
 export default async function Home() {
@@ -53,7 +62,7 @@ export default async function Home() {
           </h1>
           <div className="mt-8 text-center animate-fade-in">
             <h2 className="text-sm text-zinc-500 font-light tracking-wide">
-              Crafting Visual Stories That <span className="text-amber-500/90">Inspire</span>
+            Every pixel has a <span className="text-amber-500/90">purpose</span>. Every frame tells a <span className="text-amber-500/90">story</span>
             </h2>
           </div>
         </div>
@@ -64,8 +73,11 @@ export default async function Home() {
       <section className="relative py-32">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-4 font-display">What We Do</h2>
+            <h2 className="text-4xl font-bold text-white mb-4 font-display">What We Create</h2>
             <div className="w-24 h-1 bg-gradient-to-r from-amber-500/70 to-orange-500/70 mx-auto" />
+            <h2 className="text-sm text-zinc-500 font-light tracking-wide mt-3">
+            From concept to completion, we bring vision to life with cutting-edge production techniques and creative storytelling
+            </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
@@ -109,31 +121,48 @@ export default async function Home() {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-white mb-4 font-display">Featured Work</h2>
             <div className="w-24 h-1 bg-gradient-to-r from-amber-500/70 to-orange-500/70 mx-auto" />
+            <h2 className="text-sm text-zinc-500 font-light tracking-wide mt-3">
+            Discover our latest projects and see how we transform ideas into compelling visual narratives
+            </h2>
           </div>
           <FeaturedProjects projects={featuredProjects} />
+        </div>
+      </section>
+      
+       {/* Stats Section */}
+       <section className="relative py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-white mb-4 font-display">Our Impact</h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-amber-500/70 to-orange-500/70 mx-auto" />
+            <h2 className="text-sm text-zinc-500 font-light tracking-wide mt-3">
+              Numbers that tell our story of excellence and dedication
+            </h2>
+          </div>
+          <StatsCounter stats={stats} />
         </div>
       </section>
 
       {/* Contact Section */}
       <section className="relative py-32">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <div className="relative inline-block">
-            <div className="absolute -inset-1 bg-gradient-to-r from-amber-500/30 to-orange-500/30 rounded-lg blur opacity-25" />
-            <div className="relative bg-zinc-900/50 backdrop-blur-sm p-12 rounded-lg border border-zinc-800">
-              <h2 className="text-4xl font-bold text-white mb-6 font-display">Start Your Project</h2>
-              <p className="text-xl text-zinc-400 mb-8 max-w-2xl mx-auto">
-                Let's create something extraordinary together. Your vision, our expertise.
-              </p>
-              <Link
-                href="/contact"
-                className="inline-block px-8 py-4 bg-gradient-to-r from-amber-500/90 to-orange-500/90 text-black font-semibold rounded-full hover:opacity-90 transition-opacity"
-              >
-                Get in Touch
-              </Link>
-            </div>
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center">
+            <h2 className="text-4xl font-bold text-white mb-6 font-display">Start Your Project</h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-amber-500/70 to-orange-500/70 mx-auto mb-8" />
+            <p className="text-xl text-zinc-400 mb-12 max-w-2xl mx-auto">
+              Let's create something extraordinary together. Your vision, our expertise.
+            </p>
+            <Link
+              href="/contact"
+              className="inline-block px-5 py-2 bg-gradient-to-r from-amber-500/90 to-orange-500/90 text-black font-semibold rounded-full hover:opacity-90 transition-all duration-300 hover:transform hover:-translate-y-1"
+            >
+              Get in Touch
+            </Link>
           </div>
         </div>
       </section>
+
+      
 
       {/* Footer */}
       <footer className="py-8 ">
