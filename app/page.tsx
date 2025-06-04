@@ -134,6 +134,33 @@ export default async function Home() {
           </div>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="py-8 ">
+        <div className="max-w-7xl mx-auto px-10">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="text-zinc-400 text-sm">
+              © {new Date().getFullYear()} PASA Productions. All rights reserved.
+            </div>
+            <div className="flex items-center gap-8 text-sm">
+              <Link 
+                href="/projects" 
+                className="text-zinc-500 hover:text-zinc-300 relative group duration-500"
+              >
+                Projects
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-amber-500/70 to-orange-500/70 transition-all duration-300 group-hover:w-full" />
+              </Link>
+              <Link 
+                href="/contact" 
+                className="text-zinc-500 hover:text-zinc-300 relative group duration-500"
+              >
+                Contact
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-amber-500/70 to-orange-500/70 transition-all duration-300 group-hover:w-full" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }

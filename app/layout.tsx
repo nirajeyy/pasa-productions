@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     },
   },
   twitter: {
-    title: "Chronark",
+    title: "Pasa Productions",
     card: "summary_large_image",
   },
   icons: {
