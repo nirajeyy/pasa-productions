@@ -6,8 +6,8 @@ import { Analytics } from "./components/analytics";
 
 export const metadata: Metadata = {
   title: {
-    default: "pasaproductions.com",
-    template: "%s | pasaproductions.com",
+    default: "Pasa Productions",
+    template: "%s | Pasa Productions",
   },
   description: "A production house",
   robots: {

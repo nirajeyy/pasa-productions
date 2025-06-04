@@ -74,8 +74,8 @@ export default function StatsCounter({ stats }: StatsCounterProps) {
         const Icon = iconMap[stat.iconName]
         return (
           <div key={stat.label} className="text-center group">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-amber-500/20 to-orange-500/20 rounded-full mb-4 group-hover:scale-110 transition-transform duration-300">
-              <Icon className="h-8 w-8 text-amber-400" />
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full mb-4 group-hover:scale-110 transition-transform duration-300">
+              <Icon className="h-8 w-8 text-white" strokeWidth={1.5} />
             </div>
             <div className="text-3xl font-bold text-white mb-2">
               {counts[index]}
