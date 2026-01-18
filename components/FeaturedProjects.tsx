@@ -67,7 +67,7 @@ export default function FeaturedProjects({ projects }: FeaturedProjectsProps) {
         }
 
         .animate-scroll {
-          animation: scroll 50s linear infinite;
+          animation: scroll 120s linear infinite;
         }
 
         .pause-animation .animate-scroll {
