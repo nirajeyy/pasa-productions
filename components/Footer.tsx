@@ -21,7 +21,7 @@ export default function Footer() {
           <div>
             <Link href="/" className="inline-block group">
               <h3 className="text-2xl font-display mb-4">
-                <span className="text-transparent bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text">pasa</span>
+                <span className="text-white">pasa</span>
               </h3>
             </Link>
             <p className="text-xs text-zinc-600 leading-relaxed max-w-xs">
@@ -53,10 +53,10 @@ export default function Footer() {
             <p className="text-[10px] uppercase tracking-[0.3em] text-zinc-700 mb-6">Get in touch</p>
             <div className="space-y-3">
               <a
-                href="mailto:pasa.productions2025@gmail.com"
+                href="mailto:pasaproductions.official@gmail.com"
                 className="block text-sm text-zinc-500 hover:text-white transition-colors"
               >
-                pasa.productions2025@gmail.com
+                pasaproductions.official@gmail.com
               </a>
               <a
                 href="https://www.instagram.com/pasa.production/"

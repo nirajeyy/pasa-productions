@@ -103,7 +103,7 @@ export default function HomeClient({
             transition={{ duration: 0.8, delay: 0.3 }}
             className="font-display text-[18vw] md:text-[12vw] leading-[0.8] tracking-tighter"
           >
-            <span className="text-transparent bg-gradient-to-br from-amber-300 via-orange-500 to-red-500 bg-clip-text">
+            <span className="text-white">
               Pasa
             </span>
           </motion.h1>

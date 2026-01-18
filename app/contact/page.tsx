@@ -10,19 +10,31 @@ export default function ContactPage() {
     <div className="min-h-screen flex flex-col relative">
       {/* Background */}
       <div className="fixed inset-0 bg-black -z-20" />
-      <Particles className="fixed inset-0 -z-10 pointer-events-none" quantity={50} />
+      <Particles
+        className="fixed inset-0 -z-10 pointer-events-none"
+        quantity={50}
+      />
 
       {/* Nav */}
       <nav className="fixed top-8 right-8 z-50 flex gap-8">
-        <Link href="/" className="group relative text-xs uppercase tracking-[0.2em] text-zinc-500 hover:text-white transition-colors">
+        <Link
+          href="/"
+          className="group relative text-xs uppercase tracking-[0.2em] text-zinc-500 hover:text-white transition-colors"
+        >
           <span>Home</span>
           <span className="absolute -bottom-1 left-0 w-0 h-px bg-amber-500 group-hover:w-full transition-all duration-300" />
         </Link>
-        <Link href="/team" className="group relative text-xs uppercase tracking-[0.2em] text-zinc-500 hover:text-white transition-colors">
+        <Link
+          href="/team"
+          className="group relative text-xs uppercase tracking-[0.2em] text-zinc-500 hover:text-white transition-colors"
+        >
           <span>Team</span>
           <span className="absolute -bottom-1 left-0 w-0 h-px bg-amber-500 group-hover:w-full transition-all duration-300" />
         </Link>
-        <Link href="/projects" className="group relative text-xs uppercase tracking-[0.2em] text-zinc-500 hover:text-white transition-colors">
+        <Link
+          href="/projects"
+          className="group relative text-xs uppercase tracking-[0.2em] text-zinc-500 hover:text-white transition-colors"
+        >
           <span>Projects</span>
           <span className="absolute -bottom-1 left-0 w-0 h-px bg-amber-500 group-hover:w-full transition-all duration-300" />
         </Link>
@@ -64,15 +76,21 @@ export default function ContactPage() {
             >
               <div className="flex items-center gap-4 mb-8">
                 <span className="w-8 h-px bg-amber-500" />
-                <p className="text-xs uppercase tracking-[0.3em] text-amber-500">Get in touch</p>
+                <p className="text-xs uppercase tracking-[0.3em] text-amber-500">
+                  Get in touch
+                </p>
               </div>
 
               <h1 className="text-5xl md:text-7xl lg:text-8xl font-display text-white mb-6 leading-[1.1]">
                 Let's create
                 <br />
-                <span className="text-transparent bg-gradient-to-r from-zinc-500 to-zinc-700 bg-clip-text">something</span>
+                <span className="text-transparent bg-gradient-to-r from-zinc-500 to-zinc-700 bg-clip-text">
+                  something
+                </span>
                 <br />
-                <span className="text-transparent bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text">together</span>
+                <span className="text-transparent bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text">
+                  together
+                </span>
               </h1>
             </motion.div>
 
@@ -80,7 +98,7 @@ export default function ContactPage() {
             <div className="grid md:grid-cols-2 gap-8 md:gap-16">
               {/* Email */}
               <motion.a
-                href="mailto:pasa.productions2025@gmail.com"
+                href="mailto:pasaproductions.official@gmail.com"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
@@ -90,9 +108,11 @@ export default function ContactPage() {
                 <div className="absolute top-0 left-0 w-3 h-3 border-l-2 border-t-2 border-transparent group-hover:border-amber-500 transition-colors duration-500" />
                 <div className="absolute bottom-0 right-0 w-3 h-3 border-r-2 border-b-2 border-transparent group-hover:border-amber-500 transition-colors duration-500" />
 
-                <p className="text-[10px] uppercase tracking-[0.3em] text-zinc-700 mb-4">Email</p>
+                <p className="text-[10px] uppercase tracking-[0.3em] text-zinc-700 mb-4">
+                  Email
+                </p>
                 <p className="text-xl md:text-2xl text-white group-hover:text-amber-400 transition-colors duration-300 mb-4">
-                  pasa.productions2025
+                  paspaproductions.official
                   <br />
                   <span className="text-zinc-500">@gmail.com</span>
                 </p>
@@ -121,7 +141,9 @@ export default function ContactPage() {
                 <div className="absolute top-0 left-0 w-3 h-3 border-l-2 border-t-2 border-transparent group-hover:border-amber-500 transition-colors duration-500" />
                 <div className="absolute bottom-0 right-0 w-3 h-3 border-r-2 border-b-2 border-transparent group-hover:border-amber-500 transition-colors duration-500" />
 
-                <p className="text-[10px] uppercase tracking-[0.3em] text-zinc-700 mb-4">Instagram</p>
+                <p className="text-[10px] uppercase tracking-[0.3em] text-zinc-700 mb-4">
+                  Instagram
+                </p>
                 <p className="text-xl md:text-2xl text-white group-hover:text-amber-400 transition-colors duration-300 mb-4">
                   @pasa.production
                 </p>
@@ -140,8 +162,8 @@ export default function ContactPage() {
               className="mt-20 pt-12 border-t border-zinc-900"
             >
               <p className="text-xs text-zinc-600 max-w-md">
-                Based in Nepal. Available for projects worldwide.
-                Let's bring your vision to life with cinematic storytelling.
+                Based in Nepal. Available for projects worldwide. Let's bring
+                your vision to life with cinematic storytelling.
               </p>
             </motion.div>
           </div>
