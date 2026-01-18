@@ -30,7 +30,7 @@ export default function ProjectsClient({
     <div className="min-h-screen flex flex-col relative">
       {/* Background */}
       <div className="fixed inset-0 bg-black -z-20" />
-      <Particles className="fixed inset-0 -z-10 pointer-events-none" quantity={50} />
+      <Particles className="fixed inset-0 -z-10 pointer-events-none" quantity={30} />
 
       {/* Nav */}
       <nav className="fixed top-8 right-8 z-50 flex gap-8">

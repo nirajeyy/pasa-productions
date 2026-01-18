@@ -30,7 +30,7 @@ export default function HomeClient({
       <div className="fixed inset-0 bg-black -z-20" />
       <Particles
         className="fixed inset-0 -z-10 pointer-events-none"
-        quantity={100}
+        quantity={40}
       />
 
       {/* Nav */}
