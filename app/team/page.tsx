@@ -34,19 +34,31 @@ export default function TeamPage() {
     <div className="min-h-screen flex flex-col relative bg-black">
       {/* Background */}
       <div className="fixed inset-0 bg-black -z-20" />
-      <Particles className="fixed inset-0 -z-10 pointer-events-none" quantity={50} />
+      <Particles
+        className="fixed inset-0 -z-10 pointer-events-none"
+        quantity={50}
+      />
 
       {/* Nav */}
       <nav className="fixed top-8 right-8 z-50 flex gap-8">
-        <Link href="/" className="group relative text-xs uppercase tracking-[0.2em] text-zinc-400 hover:text-white transition-colors">
+        <Link
+          href="/"
+          className="group relative text-xs uppercase tracking-[0.2em] text-zinc-400 hover:text-white transition-colors"
+        >
           <span>Home</span>
           <span className="absolute -bottom-1 left-0 w-0 h-px bg-amber-500 group-hover:w-full transition-all duration-300" />
         </Link>
-        <Link href="/projects" className="group relative text-xs uppercase tracking-[0.2em] text-zinc-400 hover:text-white transition-colors">
+        <Link
+          href="/projects"
+          className="group relative text-xs uppercase tracking-[0.2em] text-zinc-400 hover:text-white transition-colors"
+        >
           <span>Projects</span>
           <span className="absolute -bottom-1 left-0 w-0 h-px bg-amber-500 group-hover:w-full transition-all duration-300" />
         </Link>
-        <Link href="/contact" className="group relative text-xs uppercase tracking-[0.2em] text-zinc-400 hover:text-white transition-colors">
+        <Link
+          href="/contact"
+          className="group relative text-xs uppercase tracking-[0.2em] text-zinc-400 hover:text-white transition-colors"
+        >
           <span>Contact</span>
           <span className="absolute -bottom-1 left-0 w-0 h-px bg-amber-500 group-hover:w-full transition-all duration-300" />
         </Link>
@@ -72,7 +84,9 @@ export default function TeamPage() {
           >
             <div className="flex items-center gap-4 mb-8">
               <span className="w-8 h-px bg-amber-500" />
-              <p className="text-xs uppercase tracking-[0.3em] text-amber-500">The Crew</p>
+              <p className="text-xs uppercase tracking-[0.3em] text-amber-500">
+                The Crew
+              </p>
             </div>
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-display text-white leading-[1.1]">
               The faces
@@ -172,24 +186,6 @@ export default function TeamPage() {
           transition={{ duration: 1 }}
           className="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-zinc-800 to-transparent"
         />
-
-        <div className="max-w-4xl mx-auto text-center relative">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="bg-black py-8"
-          >
-            <p className="text-2xl md:text-4xl lg:text-5xl font-display text-white leading-[1.3]">
-              Filmmakers from Nepal.
-              <br />
-              <span className="text-transparent bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 bg-clip-text">
-                Passion meets Art.
-              </span>
-            </p>
-          </motion.div>
-        </div>
       </section>
 
       <Footer />
