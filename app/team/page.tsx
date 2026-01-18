@@ -1,9 +1,33 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import Footer from "../../components/Footer";
 import Particles from "../components/particles";
+
+const teamMembers = [
+  {
+    image: "/team/team1.jpg",
+    role: "Chief Director & DOP",
+  },
+  {
+    image: "/team/team2.jpg",
+    role: "Writer / Photographer",
+  },
+  {
+    image: "/team/team3.jpg",
+    role: "Cinematographer / Writer",
+  },
+  {
+    image: "/team/team4.jpg",
+    role: "Chief SFX Makeup",
+  },
+  {
+    image: "/team/team5.jpg",
+    role: "Manager",
+  },
+];
 
 export default function TeamPage() {
   return (
@@ -29,8 +53,18 @@ export default function TeamPage() {
       </nav>
 
       {/* Hero */}
-      <section className="pt-32 pb-20 px-8 md:px-16 relative">
-        <div className="max-w-6xl mx-auto">
+      <section className="pt-32 pb-12 px-8 md:px-16 relative">
+        {/* Large decorative text */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.03 }}
+          transition={{ duration: 1 }}
+          className="absolute top-20 right-0 text-[25vw] font-display leading-none select-none pointer-events-none"
+        >
+          CREW
+        </motion.div>
+
+        <div className="max-w-6xl mx-auto relative">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -41,89 +75,119 @@ export default function TeamPage() {
               <p className="text-xs uppercase tracking-[0.3em] text-amber-500">The Crew</p>
             </div>
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-display text-white leading-[1.1]">
-              Meet the
+              The faces
               <br />
-              <span className="text-transparent bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text">team</span>
+              <span className="text-transparent bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text">
+                behind the lens
+              </span>
             </h1>
           </motion.div>
         </div>
       </section>
 
-      {/* Team Grid - Placeholder for future photos */}
-      <section className="py-20 px-8 md:px-16">
+      {/* Team - Creative Masonry Layout */}
+      <section className="py-16 px-8 md:px-16">
         <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
-          >
-            {/* Placeholder team members - will be replaced with actual photos */}
-            {[1, 2, 3, 4, 5, 6, 7, 8].map((_, index) => (
+          {/* First row - 2 large */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            {teamMembers.slice(0, 2).map((member, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 * index }}
-                className="group"
+                transition={{ duration: 0.8, delay: 0.1 * index }}
+                className="group relative"
               >
-                <div className="aspect-[3/4] bg-zinc-900 border border-zinc-800 relative overflow-hidden mb-4">
-                  {/* Placeholder */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-zinc-800 text-6xl font-display">?</span>
+                <div className="aspect-[4/5] relative overflow-hidden">
+                  <Image
+                    src={member.image}
+                    alt={member.role}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  {/* Gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+                  {/* Role overlay */}
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <div className="flex items-center gap-3">
+                      <span className="w-6 h-px bg-amber-500" />
+                      <p className="text-xs uppercase tracking-[0.2em] text-white/80">
+                        {member.role}
+                      </p>
+                    </div>
                   </div>
-                  {/* Hover overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  {/* Corner frame */}
+                  <div className="absolute top-4 left-4 w-8 h-8 border-l-2 border-t-2 border-white/20 group-hover:border-amber-500/50 transition-colors duration-500" />
+                  <div className="absolute bottom-4 right-4 w-8 h-8 border-r-2 border-b-2 border-white/20 group-hover:border-amber-500/50 transition-colors duration-500" />
                 </div>
-                <p className="text-sm text-zinc-600">Coming soon</p>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
 
-          {/* Message */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="text-center text-zinc-600 text-sm mt-16"
-          >
-            Team photos coming soon...
-          </motion.p>
+          {/* Second row - 3 medium */}
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+            {teamMembers.slice(2).map((member, index) => (
+              <motion.div
+                key={index + 2}
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 + 0.1 * index }}
+                className="group relative"
+              >
+                <div className="aspect-[3/4] relative overflow-hidden">
+                  <Image
+                    src={member.image}
+                    alt={member.role}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  {/* Gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+                  {/* Role overlay */}
+                  <div className="absolute bottom-0 left-0 right-0 p-4">
+                    <div className="flex items-center gap-2">
+                      <span className="w-4 h-px bg-amber-500" />
+                      <p className="text-[10px] uppercase tracking-[0.2em] text-white/80">
+                        {member.role}
+                      </p>
+                    </div>
+                  </div>
+                  {/* Corner frame */}
+                  <div className="absolute top-3 left-3 w-6 h-6 border-l-2 border-t-2 border-white/20 group-hover:border-amber-500/50 transition-colors duration-500" />
+                  <div className="absolute bottom-3 right-3 w-6 h-6 border-r-2 border-b-2 border-white/20 group-hover:border-amber-500/50 transition-colors duration-500" />
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-32 px-8 md:px-16 relative">
-        <div className="max-w-4xl mx-auto text-center">
+      {/* Quote */}
+      <section className="py-24 px-8 md:px-16 relative overflow-hidden">
+        {/* Decorative line */}
+        <motion.div
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+          className="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-zinc-800 to-transparent"
+        />
+
+        <div className="max-w-4xl mx-auto text-center relative">
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
+            className="bg-black py-8"
           >
-            <p className="text-xs uppercase tracking-[0.4em] text-zinc-600 mb-8">
-              Want to join us?
-            </p>
-
-            <h2 className="text-4xl md:text-6xl font-display text-white mb-12">
-              Let's create together
-            </h2>
-
-            <Link
-              href="/contact"
-              className="group relative inline-flex items-center gap-4"
-            >
-              <span className="px-8 py-4 border border-zinc-800 text-sm uppercase tracking-[0.2em] text-zinc-400 group-hover:text-white group-hover:border-amber-500/50 transition-all duration-500">
-                Get in touch
+            <p className="text-2xl md:text-4xl lg:text-5xl font-display text-white leading-[1.3]">
+              Filmmakers from Nepal.
+              <br />
+              <span className="text-transparent bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 bg-clip-text">
+                Passion meets Art.
               </span>
-              <motion.span
-                animate={{ x: [0, 5, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-                className="text-amber-500"
-              >
-                →
-              </motion.span>
-            </Link>
+            </p>
           </motion.div>
         </div>
       </section>

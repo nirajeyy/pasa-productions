@@ -108,17 +108,6 @@ export default function HomeClient({
             </span>
           </motion.h1>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="mt-2"
-          >
-            <span className="text-zinc-500 text-base md:text-xl font-light tracking-[0.3em] uppercase">
-              Productions
-            </span>
-          </motion.div>
-
           {/* Tagline with line */}
           <motion.div
             initial={{ opacity: 0 }}
