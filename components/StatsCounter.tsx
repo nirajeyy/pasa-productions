@@ -1,90 +1,68 @@
-"use client"
+"use client";
 
-import { useState, useEffect, useRef } from "react"
-import { Award, Clock, Star, Users } from "lucide-react"
+import { useState, useEffect, useRef } from "react";
+import { motion, useInView } from "framer-motion";
 
 interface Stat {
-  iconName: "Award" | "Clock" | "Star" | "Users"
-  label: string
-  value: number
-  suffix: string
+  iconName: "Award" | "Clock" | "Star" | "Users";
+  label: string;
+  value: number;
+  suffix: string;
 }
 
 interface StatsCounterProps {
-  stats: Stat[]
-}
-
-const iconMap = {
-  Award,
-  Clock,
-  Star,
-  Users
+  stats: Stat[];
 }
 
 export default function StatsCounter({ stats }: StatsCounterProps) {
-  const [isVisible, setIsVisible] = useState(false)
-  const [counts, setCounts] = useState(stats.map(() => 0))
-  const sectionRef = useRef<HTMLDivElement>(null)
+  const [counts, setCounts] = useState(stats.map(() => 0));
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-        }
-      },
-      { threshold: 0.3 }
-    )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
-    return () => observer.disconnect()
-  }, [])
-
-  useEffect(() => {
-    if (isVisible) {
+    if (isInView) {
       stats.forEach((stat, index) => {
-        const duration = 2000 // 2 seconds
-        const steps = 60
-        const increment = stat.value / steps
-        let current = 0
+        const duration = 2000;
+        const steps = 60;
+        const increment = stat.value / steps;
+        let current = 0;
 
         const timer = setInterval(() => {
-          current += increment
+          current += increment;
           if (current >= stat.value) {
-            current = stat.value
-            clearInterval(timer)
+            current = stat.value;
+            clearInterval(timer);
           }
 
           setCounts((prev) => {
-            const newCounts = [...prev]
-            newCounts[index] = Math.floor(current)
-            return newCounts
-          })
-        }, duration / steps)
-      })
+            const newCounts = [...prev];
+            newCounts[index] = Math.floor(current);
+            return newCounts;
+          });
+        }, duration / steps);
+      });
     }
-  }, [isVisible, stats])
+  }, [isInView, stats]);
 
   return (
-    <div ref={sectionRef} className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-      {stats.map((stat, index) => {
-        const Icon = iconMap[stat.iconName]
-        return (
-          <div key={stat.label} className="text-center group">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full mb-4 group-hover:scale-110 transition-transform duration-300">
-              <Icon className="h-8 w-8 text-white" strokeWidth={1.5} />
-            </div>
-            <div className="text-3xl font-bold text-white mb-2">
-              {counts[index]}
-              {stat.suffix}
-            </div>
-            <div className="text-sm text-zinc-400">{stat.label}</div>
+    <div ref={sectionRef} className="grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-8">
+      {stats.map((stat, index) => (
+        <motion.div
+          key={stat.label}
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+          transition={{ duration: 0.8, delay: index * 0.15 }}
+          className="text-center"
+        >
+          <div className="text-4xl md:text-5xl font-display text-white mb-2">
+            {counts[index]}
+            <span className="text-amber-500">{stat.suffix}</span>
           </div>
-        )
-      })}
+          <p className="text-xs uppercase tracking-[0.2em] text-zinc-600">
+            {stat.label}
+          </p>
+        </motion.div>
+      ))}
     </div>
-  )
-} 
+  );
+}

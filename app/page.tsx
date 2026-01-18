@@ -1,22 +1,31 @@
-import Link from "next/link";
-import React from "react";
-import Particles from "./components/particles";
 import { getAllProjects } from "../lib/projects";
-import FeaturedProjects from "../components/FeaturedProjects";
 import { Project } from "../types";
-import { Award, Clock, Star, Users } from "lucide-react";
-import StatsCounter from "../components/StatsCounter";
-
-const navigation = [
-  { name: "Projects", href: "/projects" },
-  { name: "Contact", href: "/contact" },
-];
+import HomeClient from "./HomeClient";
 
 const stats = [
   { iconName: "Award" as const, label: "Awards Won", value: 25, suffix: "+" },
   { iconName: "Users" as const, label: "Happy Clients", value: 150, suffix: "+" },
   { iconName: "Clock" as const, label: "Years Experience", value: 8, suffix: "+" },
   { iconName: "Star" as const, label: "Projects Completed", value: 300, suffix: "+" },
+];
+
+const services = [
+  {
+    title: "TV Commercials",
+    description: "We craft high-end TVCs with precision and purpose. From meticulous pre-production to cinematic set design, art direction, color, wardrobe, and post-production—every frame is designed to elevate brand language and leave a lasting impact.",
+  },
+  {
+    title: "Film Production & Photography",
+    description: "Storytelling is at our core. We create visually striking films and photographs with a raw, cinematic soul—bringing unique stories to life through mood, movement, and emotion.",
+  },
+  {
+    title: "Music Video Production",
+    description: "We push boundaries with fearless ideas and bold visuals. Treating every music video like a short film, we build immersive cinematic worlds across genres, collaborating with artists both local and global.",
+  },
+  {
+    title: "Sound Design & Music Production",
+    description: "Our in-house sound studio delivers immersive audio experiences—from recording and ADR to sound design, scoring, mixing, and mastering—crafted to complete the story.",
+  },
 ];
 
 export default async function Home() {
@@ -26,170 +35,10 @@ export default async function Home() {
     .sort((a: Project, b: Project) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-tl from-black via-zinc-600/20 to-black">
-      {/* Particles Background */}
-      <Particles
-        className="fixed inset-0 -z-10 animate-fade-in"
-        quantity={200}
-      />
-
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-black/10 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto px-4">
-          <ul className="flex items-center justify-center gap-8 py-6">
-            {navigation.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="text-sm duration-500 text-zinc-500 hover:text-zinc-300 relative group"
-              >
-                {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-amber-500/70 to-orange-500/70 transition-all duration-300 group-hover:w-full" />
-              </Link>
-            ))}
-          </ul>
-        </div>
-      </nav>
-
-      {/* Hero Section */}
-      <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
-        {/* <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/50" /> */}
-        {/* <div className="hidden w-screen h-px animate-glow md:block animate-fade-left bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0" /> */}
-        <div className="relative z-10 text-center">
-          <h1 className="py-3.5 px-0.5 z-10 text-4xl duration-1000 cursor-default animate-title font-display sm:text-6xl md:text-9xl whitespace-nowrap">
-            <span className="text-transparent bg-gradient-to-r from-amber-500/90 via-orange-500/90 to-amber-500/90 bg-clip-text">pasa</span>{" "}
-            <span className="text-transparent bg-white bg-clip-text text-edge-outline">productions</span>
-          </h1>
-          <div className="mt-8 text-center animate-fade-in">
-            <h2 className="text-sm text-zinc-500 font-light tracking-wide">
-            Every pixel has a <span className="text-amber-500/90">purpose</span>. Every frame tells a <span className="text-amber-500/90">story</span>
-            </h2>
-          </div>
-        </div>
-        <div className="hidden w-screen h-px animate-glow md:block animate-fade-right bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0" />
-      </section>
-
-      {/* Services Section */}
-      <section className="relative py-32">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-4 font-display">What We Create</h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-amber-500/70 to-orange-500/70 mx-auto" />
-            <h2 className="text-sm text-zinc-500 font-light tracking-wide mt-3">
-            From concept to completion, we bring vision to life with cutting-edge production techniques and creative storytelling
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                title: "Commercials",
-                description: "Compelling TV commercials that drive brand engagement",
-              },
-              {
-                title: "Documentaries",
-                description: "In-depth storytelling that captures real moments",
-              },
-              {
-                title: "Short Films",
-                description: "Creative narratives that leave lasting impressions",
-              },
-              {
-                title: "Music Videos",
-                description: "Professional content that elevates your brand",
-              },
-            ].map((service) => (
-              <div
-                key={service.title}
-                className="group p-8 bg-zinc-900/50 backdrop-blur-sm rounded-lg border border-zinc-800 hover:border-zinc-700 transition-all duration-300 hover:transform hover:-translate-y-1"
-              >
-                <div className="relative">
-                  <div className="absolute -inset-1 bg-gradient-to-r from-amber-500/30 to-orange-500/30 rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-300" />
-                  <div className="relative">
-                    <h3 className="text-xl font-semibold text-white mb-3">{service.title}</h3>
-                    <p className="text-zinc-400">{service.description}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Work Section */}
-      <section className="relative py-32">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-4 font-display">Featured Work</h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-amber-500/70 to-orange-500/70 mx-auto" />
-            <h2 className="text-sm text-zinc-500 font-light tracking-wide mt-3">
-            Discover our latest projects and see how we transform ideas into compelling visual narratives
-            </h2>
-          </div>
-          <FeaturedProjects projects={featuredProjects} />
-        </div>
-      </section>
-      
-       {/* Stats Section */}
-       <section className="relative py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-4 font-display">Our Impact</h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-amber-500/70 to-orange-500/70 mx-auto" />
-            <h2 className="text-sm text-zinc-500 font-light tracking-wide mt-3">
-              Numbers that tell our story of excellence and dedication
-            </h2>
-          </div>
-          <StatsCounter stats={stats} />
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section className="relative py-32">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center">
-            <h2 className="text-4xl font-bold text-white mb-6 font-display">Start Your Project</h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-amber-500/70 to-orange-500/70 mx-auto mb-8" />
-            <p className="text-xl text-zinc-400 mb-12 max-w-2xl mx-auto">
-              Let's create something extraordinary together. Your vision, our expertise.
-            </p>
-            <Link
-              href="/contact"
-              className="inline-block px-5 py-2 bg-gradient-to-r from-amber-500/90 to-orange-500/90 text-black font-semibold rounded-full hover:opacity-90 transition-all duration-300 hover:transform hover:-translate-y-1"
-            >
-              Get in Touch
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      
-
-      {/* Footer */}
-      <footer className="py-8 ">
-        <div className="max-w-7xl mx-auto px-10">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="text-zinc-400 text-sm">
-              © {new Date().getFullYear()} PASA Productions. All rights reserved.
-            </div>
-            <div className="flex items-center gap-8 text-sm">
-              <Link 
-                href="/projects" 
-                className="text-zinc-500 hover:text-zinc-300 relative group duration-500"
-              >
-                Projects
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-amber-500/70 to-orange-500/70 transition-all duration-300 group-hover:w-full" />
-              </Link>
-              <Link 
-                href="/contact" 
-                className="text-zinc-500 hover:text-zinc-300 relative group duration-500"
-              >
-                Contact
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-amber-500/70 to-orange-500/70 transition-all duration-300 group-hover:w-full" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </footer>
-    </div>
+    <HomeClient
+      services={services}
+      stats={stats}
+      featuredProjects={featuredProjects}
+    />
   );
 }

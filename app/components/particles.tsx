@@ -25,7 +25,11 @@ export default function Particles({
 	const mousePosition = useMousePosition();
 	const mouse = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
 	const canvasSize = useRef<{ w: number; h: number }>({ w: 0, h: 0 });
-	const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1;
+	const [dpr, setDpr] = useState(1);
+
+	useEffect(() => {
+		setDpr(window.devicePixelRatio || 1);
+	}, []);
 
 	useEffect(() => {
 		if (canvasRef.current) {
@@ -227,8 +231,8 @@ export default function Particles({
 	};
 
 	return (
-		<div className={className} ref={canvasContainerRef} aria-hidden="true">
-			<canvas ref={canvasRef} />
+		<div className={`${className} pointer-events-none`} ref={canvasContainerRef} aria-hidden="true">
+			<canvas ref={canvasRef} className="pointer-events-none" />
 		</div>
 	);
 }

@@ -6,5 +6,14 @@
   .text-edge-outline {
     -webkit-text-stroke: 1px rgba(255,255,255,0.3);
   }
+
+  input, textarea, select {
+    background-color: transparent;
+    color: inherit;
+  }
+
+  input::placeholder {
+    color: #52525b;
+  }
 } 
 
