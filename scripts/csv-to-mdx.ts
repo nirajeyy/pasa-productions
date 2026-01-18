@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import * as path from "path";
 
-const CSV_PATH = path.join(process.cwd(), "content", "projects-template.csv");
+const CSV_PATH = path.join(process.cwd(), "content", "projects-templates.csv");
 const OUTPUT_DIR = path.join(process.cwd(), "content", "projects");
 
 interface ProjectRow {
