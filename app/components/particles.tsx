@@ -21,14 +21,32 @@ export default function Particles({
 	const canvasRef = useRef<HTMLCanvasElement>(null);
 	const canvasContainerRef = useRef<HTMLDivElement>(null);
 	const context = useRef<CanvasRenderingContext2D | null>(null);
-	const circles = useRef<any[]>([]);
+	const circles = useRef<Circle[]>([]);
 	const mousePosition = useMousePosition();
 	const mouse = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
 	const canvasSize = useRef<{ w: number; h: number }>({ w: 0, h: 0 });
+	const animationFrameId = useRef<number | null>(null);
 	const [dpr, setDpr] = useState(1);
+	const [isMobile, setIsMobile] = useState(false);
+
+	type Circle = {
+		x: number;
+		y: number;
+		translateX: number;
+		translateY: number;
+		size: number;
+		alpha: number;
+		targetAlpha: number;
+		dx: number;
+		dy: number;
+		magnetism: number;
+	};
 
 	useEffect(() => {
-		setDpr(window.devicePixelRatio || 1);
+		// Detect mobile and set lower DPR for performance
+		const mobile = window.innerWidth < 768;
+		setIsMobile(mobile);
+		setDpr(mobile ? 1 : Math.min(window.devicePixelRatio || 1, 2));
 	}, []);
 
 	useEffect(() => {
@@ -37,12 +55,16 @@ export default function Particles({
 		}
 		initCanvas();
 		animate();
-		window.addEventListener("resize", initCanvas);
+		window.addEventListener("resize", handleResize);
 
+		// Cleanup function - CRITICAL for preventing memory leaks
 		return () => {
-			window.removeEventListener("resize", initCanvas);
+			window.removeEventListener("resize", handleResize);
+			if (animationFrameId.current) {
+				cancelAnimationFrame(animationFrameId.current);
+			}
 		};
-	}, []);
+	}, [dpr, isMobile]);
 
 	useEffect(() => {
 		onMouseMove();
@@ -51,6 +73,12 @@ export default function Particles({
 	useEffect(() => {
 		initCanvas();
 	}, [refresh]);
+
+	const handleResize = () => {
+		const mobile = window.innerWidth < 768;
+		setIsMobile(mobile);
+		initCanvas();
+	};
 
 	const initCanvas = () => {
 		resizeCanvas();
@@ -69,19 +97,6 @@ export default function Particles({
 				mouse.current.y = y;
 			}
 		}
-	};
-
-	type Circle = {
-		x: number;
-		y: number;
-		translateX: number;
-		translateY: number;
-		size: number;
-		alpha: number;
-		targetAlpha: number;
-		dx: number;
-		dy: number;
-		magnetism: number;
 	};
 
 	const resizeCanvas = () => {
@@ -151,7 +166,8 @@ export default function Particles({
 
 	const drawParticles = () => {
 		clearContext();
-		const particleCount = quantity;
+		// Reduce particles on mobile for better performance
+		const particleCount = isMobile ? Math.min(quantity, 15) : quantity;
 		for (let i = 0; i < particleCount; i++) {
 			const circle = circleParams();
 			drawCircle(circle);
@@ -173,12 +189,11 @@ export default function Particles({
 	const animate = () => {
 		clearContext();
 		circles.current.forEach((circle: Circle, i: number) => {
-			// Handle the alpha value
 			const edge = [
-				circle.x + circle.translateX - circle.size, // distance from left edge
-				canvasSize.current.w - circle.x - circle.translateX - circle.size, // distance from right edge
-				circle.y + circle.translateY - circle.size, // distance from top edge
-				canvasSize.current.h - circle.y - circle.translateY - circle.size, // distance from bottom edge
+				circle.x + circle.translateX - circle.size,
+				canvasSize.current.w - circle.x - circle.translateX - circle.size,
+				circle.y + circle.translateY - circle.size,
+				canvasSize.current.h - circle.y - circle.translateY - circle.size,
 			];
 			const closestEdge = edge.reduce((a, b) => Math.min(a, b));
 			const remapClosestEdge = parseFloat(
@@ -200,19 +215,15 @@ export default function Particles({
 			circle.translateY +=
 				(mouse.current.y / (staticity / circle.magnetism) - circle.translateY) /
 				ease;
-			// circle gets out of the canvas
 			if (
 				circle.x < -circle.size ||
 				circle.x > canvasSize.current.w + circle.size ||
 				circle.y < -circle.size ||
 				circle.y > canvasSize.current.h + circle.size
 			) {
-				// remove the circle from the array
 				circles.current.splice(i, 1);
-				// create a new circle
 				const newCircle = circleParams();
 				drawCircle(newCircle);
-				// update the circle position
 			} else {
 				drawCircle(
 					{
@@ -227,7 +238,7 @@ export default function Particles({
 				);
 			}
 		});
-		window.requestAnimationFrame(animate);
+		animationFrameId.current = window.requestAnimationFrame(animate);
 	};
 
 	return (
