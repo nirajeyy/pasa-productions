@@ -18,6 +18,10 @@ export default function ContactPage() {
           <span>Home</span>
           <span className="absolute -bottom-1 left-0 w-0 h-px bg-amber-500 group-hover:w-full transition-all duration-300" />
         </Link>
+        <Link href="/team" className="group relative text-xs uppercase tracking-[0.2em] text-zinc-500 hover:text-white transition-colors">
+          <span>Team</span>
+          <span className="absolute -bottom-1 left-0 w-0 h-px bg-amber-500 group-hover:w-full transition-all duration-300" />
+        </Link>
         <Link href="/projects" className="group relative text-xs uppercase tracking-[0.2em] text-zinc-500 hover:text-white transition-colors">
           <span>Projects</span>
           <span className="absolute -bottom-1 left-0 w-0 h-px bg-amber-500 group-hover:w-full transition-all duration-300" />

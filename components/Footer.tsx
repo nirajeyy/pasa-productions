@@ -33,6 +33,10 @@ export default function Footer() {
           <div>
             <p className="text-[10px] uppercase tracking-[0.3em] text-zinc-700 mb-6">Navigate</p>
             <nav className="space-y-3">
+              <Link href="/team" className="group flex items-center gap-2 text-sm text-zinc-500 hover:text-white transition-colors">
+                <span className="w-0 h-px bg-amber-500 group-hover:w-4 transition-all duration-300" />
+                <span>Team</span>
+              </Link>
               <Link href="/projects" className="group flex items-center gap-2 text-sm text-zinc-500 hover:text-white transition-colors">
                 <span className="w-0 h-px bg-amber-500 group-hover:w-4 transition-all duration-300" />
                 <span>Projects</span>

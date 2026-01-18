@@ -36,6 +36,13 @@ export default function HomeClient({
       {/* Nav */}
       <nav className="fixed top-8 right-8 z-50 flex gap-8">
         <Link
+          href="/team"
+          className="group relative text-xs uppercase tracking-[0.2em] text-zinc-500 hover:text-white transition-colors"
+        >
+          <span>Team</span>
+          <span className="absolute -bottom-1 left-0 w-0 h-px bg-amber-500 group-hover:w-full transition-all duration-300" />
+        </Link>
+        <Link
           href="/projects"
           className="group relative text-xs uppercase tracking-[0.2em] text-zinc-500 hover:text-white transition-colors"
         >
@@ -143,6 +150,83 @@ export default function HomeClient({
             className="w-px h-12 bg-gradient-to-b from-amber-500/50 to-transparent"
           />
         </motion.div>
+      </section>
+
+      {/* Showreel Section */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Video Background */}
+        <div className="absolute inset-0 z-0">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full h-full object-cover"
+          >
+            <source src="/about-us.mp4" type="video/mp4" />
+          </video>
+          {/* Overlay gradients - strong fade in/out */}
+          <div className="absolute inset-0 bg-black/30" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-black/20 to-black" />
+          <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-b from-black to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-black to-transparent" />
+        </div>
+
+        {/* Decorative frame */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+          className="absolute inset-8 md:inset-16 border border-white/10 pointer-events-none z-10"
+        />
+
+        {/* Content */}
+        <div className="relative z-10 text-center px-8 max-w-4xl">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-3xl md:text-2xl lg:text-2xl font-display text-white leading-[1.2] mb-6"
+          >
+            <span className="font-light">"Images remember</span>
+            <br />
+            <span className="text-transparent bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text">
+              what we forget"
+            </span>
+          </motion.h2>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="flex items-center justify-center gap-4 mt-12"
+          >
+            <span className="w-16 h-px bg-gradient-to-r from-transparent to-white/30" />
+            <span className="text-[10px] uppercase tracking-[0.3em] text-white/40">
+              Nepal
+            </span>
+            <span className="w-16 h-px bg-gradient-to-l from-transparent to-white/30" />
+          </motion.div>
+        </div>
+
+        {/* Corner accents */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5, duration: 1 }}
+          className="absolute top-16 left-16 w-8 h-8 border-l-2 border-t-2 border-amber-500/30 z-10"
+        />
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5, duration: 1 }}
+          className="absolute bottom-16 right-16 w-8 h-8 border-r-2 border-b-2 border-amber-500/30 z-10"
+        />
       </section>
 
       {/* Services */}
