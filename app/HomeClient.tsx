@@ -152,7 +152,7 @@ export default function HomeClient({
             playsInline
             className="w-full h-full object-cover"
           >
-            <source src="/about-us.mp4" type="video/mp4" />
+            <source src="https://videos.pasaproductions.com/pasa-productions-story.mp4" type="video/mp4" />
           </video>
           {/* Overlay gradients - strong fade in/out */}
           <div className="absolute inset-0 bg-black/30" />
