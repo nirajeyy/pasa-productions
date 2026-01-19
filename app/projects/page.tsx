@@ -1,10 +1,20 @@
-import { Suspense } from "react";
+import { Metadata } from "next";
 import { getProjectsByPage } from "../../lib/projects";
-import SearchBar from "../../components/SearchBar";
-import CategoryFilter from "../../components/CategoryFilter";
-import ProjectCard from "../../components/ProjectCard";
-import Footer from "../../components/Footer";
 import ProjectsClient from "./ProjectsClient";
+
+export const metadata: Metadata = {
+  title: "Our Projects",
+  description:
+    "Explore Pasa Productions' portfolio of award-winning TV commercials, music videos, documentaries, and films produced in Nepal. See our best work in video production and cinematography.",
+  openGraph: {
+    title: "Projects | Pasa Productions Nepal",
+    description:
+      "Award-winning TV commercials, music videos, documentaries & films from Nepal's leading production company.",
+  },
+  alternates: {
+    canonical: "https://pasaproductions.com/projects",
+  },
+};
 
 const categories = [
   "Commercial",

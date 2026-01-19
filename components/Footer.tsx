@@ -99,11 +99,6 @@ export default function Footer() {
           <p className="text-[10px] text-zinc-800">Crafted with passion</p>
         </motion.div>
       </div>
-
-      {/* Decorative large text */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 text-[15vw] font-display text-zinc-950 leading-none select-none pointer-events-none overflow-hidden whitespace-nowrap">
-        PASA
-      </div>
     </footer>
   );
 }

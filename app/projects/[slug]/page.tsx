@@ -19,9 +19,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
+  const categoryText = project.category ? `${project.category} | ` : "";
+  const clientText = project.client ? ` for ${project.client}` : "";
+
   return {
-    title: `${project.title} | PASA Productions`,
-    description: project.description,
+    title: `${project.title}`,
+    description: `${project.description} ${categoryText}produced by Pasa Productions${clientText}. Watch the full video and learn about this Nepal production.`,
+    openGraph: {
+      title: `${project.title} | Pasa Productions Nepal`,
+      description: project.description,
+      type: "video.other",
+      images: project.thumbnail
+        ? [{ url: project.thumbnail, alt: project.title }]
+        : undefined,
+    },
+    alternates: {
+      canonical: `https://pasaproductions.com/projects/${params.slug}`,
+    },
   };
 }
 
