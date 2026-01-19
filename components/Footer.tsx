@@ -78,7 +78,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-xs text-zinc-500 hover:text-white transition-colors"
               >
-                <span>Instagram</span>
+                <span>Follow our Journey on Instagram</span>
                 <span className="text-amber-500">↗</span>
               </a>
             </div>
