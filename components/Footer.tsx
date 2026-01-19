@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export default function Footer() {
   return (
-    <footer className="relative pt-24 pb-20 px-8 md:px-16 overflow-hidden">
+    <footer className="relative py-16 md:py-24 px-8 md:px-16 overflow-hidden">
       {/* Top border with gradient */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-zinc-800 to-transparent" />
 
@@ -15,7 +15,7 @@ export default function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-8"
+          className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12"
         >
           {/* Brand */}
           <div>
@@ -91,7 +91,7 @@ export default function Footer() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-20 pt-10 border-t border-zinc-900 flex flex-col md:flex-row items-center justify-between gap-4"
+          className="mt-12 md:mt-16 pt-8 border-t border-zinc-900 flex flex-col md:flex-row items-center justify-between gap-4"
         >
           <p className="text-[10px] uppercase tracking-[0.2em] text-zinc-700">
             © {new Date().getFullYear()} Pasa Productions. All rights reserved.
