@@ -1,12 +1,13 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
 import Particles from "./components/particles";
 import FeaturedProjects from "../components/FeaturedProjects";
 import StatsCounter from "../components/StatsCounter";
 import Footer from "../components/Footer";
+import Nav from "../components/Nav";
 import { Project } from "../types";
+import Link from "next/link";
 
 interface HomeClientProps {
   services: { title: string; description: string }[];
@@ -33,30 +34,7 @@ export default function HomeClient({
         quantity={40}
       />
 
-      {/* Nav */}
-      <nav className="fixed top-8 right-8 z-50 flex gap-8">
-        <Link
-          href="/team"
-          className="group relative text-xs uppercase tracking-[0.2em] text-zinc-500 hover:text-white transition-colors"
-        >
-          <span>Team</span>
-          <span className="absolute -bottom-1 left-0 w-0 h-px bg-amber-500 group-hover:w-full transition-all duration-300" />
-        </Link>
-        <Link
-          href="/projects"
-          className="group relative text-xs uppercase tracking-[0.2em] text-zinc-500 hover:text-white transition-colors"
-        >
-          <span>Projects</span>
-          <span className="absolute -bottom-1 left-0 w-0 h-px bg-amber-500 group-hover:w-full transition-all duration-300" />
-        </Link>
-        <Link
-          href="/contact"
-          className="group relative text-xs uppercase tracking-[0.2em] text-zinc-500 hover:text-white transition-colors"
-        >
-          <span>Contact</span>
-          <span className="absolute -bottom-1 left-0 w-0 h-px bg-amber-500 group-hover:w-full transition-all duration-300" />
-        </Link>
-      </nav>
+      <Nav />
 
       {/* Hero */}
       <section className="h-screen flex items-center justify-center relative overflow-hidden">
@@ -103,9 +81,7 @@ export default function HomeClient({
             transition={{ duration: 0.8, delay: 0.3 }}
             className="font-display text-[18vw] md:text-[12vw] leading-[0.8] tracking-tighter"
           >
-            <span className="text-white">
-              Pasa
-            </span>
+            <span className="text-white">Pasa</span>
           </motion.h1>
 
           {/* Tagline with line */}
@@ -152,7 +128,10 @@ export default function HomeClient({
             playsInline
             className="w-full h-full object-cover"
           >
-            <source src="https://videos.pasaproductions.com/pasa-productions-story.mp4" type="video/mp4" />
+            <source
+              src="https://videos.pasaproductions.com/pasa-productions-story.mp4"
+              type="video/mp4"
+            />
           </video>
           {/* Overlay gradients - strong fade in/out */}
           <div className="absolute inset-0 bg-black/30" />

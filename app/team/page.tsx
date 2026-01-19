@@ -1,31 +1,60 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Footer from "../../components/Footer";
+import Nav from "../../components/Nav";
 import Particles from "../components/particles";
 
 const teamMembers = [
   {
+    name: "Abin Bho",
     image: "/team/team1.jpg",
-    role: "Chief Director & DOP",
+    role: "Director / DOP",
+    description:
+      "Visionary filmmaker with a keen eye for storytelling. Specializes in crafting compelling narratives through dynamic cinematography and innovative direction.",
+    expertise: ["Film Direction", "Cinematography", "Visual Storytelling"],
   },
   {
+    name: "Ananta Poudel",
     image: "/team/team2.jpg",
     role: "Writer / Photographer",
+    description:
+      "Creative wordsmith and visual artist who brings stories to life through powerful scripts and evocative photography.",
+    expertise: ["Screenwriting", "Photography", "Creative Direction"],
   },
   {
+    name: "Diwas Poudel",
     image: "/team/team3.jpg",
     role: "Cinematographer / Writer",
+    description:
+      "Skilled in capturing compelling visuals and crafting engaging narratives. Brings stories to life through thoughtful cinematography and well-developed scripts.",
+    expertise: ["Cinematography", "Script Development"],
   },
   {
+    name: "Yasasvi Bho",
     image: "/team/team4.jpg",
-    role: "Chief SFX Makeup",
+    role: "Makeup / SFX",
+    description:
+      "Transformative artist specializing in character creation through makeup artistry and special effects that bring imagination to reality.",
+    expertise: [
+      "Makeup Artistry",
+      "Special Effects",
+      "Character Design",
+      "Styling",
+    ],
   },
   {
+    name: "Niraj Tamang",
     image: "/team/team5.jpg",
-    role: "Manager",
+    role: "Project Manager",
+    description:
+      "Strategic coordinator who ensures seamless production workflows, keeping projects on track from concept to completion.",
+    expertise: [
+      "Project Coordination",
+      "Production Planning",
+      "Team Management",
+    ],
   },
 ];
 
@@ -39,30 +68,7 @@ export default function TeamPage() {
         quantity={30}
       />
 
-      {/* Nav */}
-      <nav className="fixed top-8 right-8 z-50 flex gap-8">
-        <Link
-          href="/"
-          className="group relative text-xs uppercase tracking-[0.2em] text-zinc-400 hover:text-white transition-colors"
-        >
-          <span>Home</span>
-          <span className="absolute -bottom-1 left-0 w-0 h-px bg-amber-500 group-hover:w-full transition-all duration-300" />
-        </Link>
-        <Link
-          href="/projects"
-          className="group relative text-xs uppercase tracking-[0.2em] text-zinc-400 hover:text-white transition-colors"
-        >
-          <span>Projects</span>
-          <span className="absolute -bottom-1 left-0 w-0 h-px bg-amber-500 group-hover:w-full transition-all duration-300" />
-        </Link>
-        <Link
-          href="/contact"
-          className="group relative text-xs uppercase tracking-[0.2em] text-zinc-400 hover:text-white transition-colors"
-        >
-          <span>Contact</span>
-          <span className="absolute -bottom-1 left-0 w-0 h-px bg-amber-500 group-hover:w-full transition-all duration-300" />
-        </Link>
-      </nav>
+      <Nav />
 
       {/* Hero */}
       <section className="pt-32 pb-12 px-8 md:px-16 relative">
@@ -99,80 +105,96 @@ export default function TeamPage() {
         </div>
       </section>
 
-      {/* Team - Creative Masonry Layout */}
-      <section className="py-16 px-8 md:px-16">
-        <div className="max-w-6xl mx-auto">
-          {/* First row - 2 large */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            {teamMembers.slice(0, 2).map((member, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.1 * index }}
-                className="group relative"
-              >
-                <div className="aspect-[4/5] relative overflow-hidden">
-                  <Image
-                    src={member.image}
-                    alt={member.role}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  {/* Gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
-                  {/* Role overlay */}
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <div className="flex items-center gap-3">
-                      <span className="w-6 h-px bg-amber-500" />
-                      <p className="text-xs uppercase tracking-[0.2em] text-white/80">
-                        {member.role}
-                      </p>
-                    </div>
-                  </div>
-                  {/* Corner frame */}
-                  <div className="absolute top-4 left-4 w-8 h-8 border-l-2 border-t-2 border-white/20 group-hover:border-amber-500/50 transition-colors duration-500" />
-                  <div className="absolute bottom-4 right-4 w-8 h-8 border-r-2 border-b-2 border-white/20 group-hover:border-amber-500/50 transition-colors duration-500" />
-                </div>
-              </motion.div>
-            ))}
-          </div>
+      {/* Team - Full Width Rows */}
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto">
+          {teamMembers.map((member, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="group"
+            >
+              {/* Divider line */}
+              <div className="h-px bg-gradient-to-r from-transparent via-zinc-800 to-transparent" />
 
-          {/* Second row - 3 medium */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-            {teamMembers.slice(2).map((member, index) => (
-              <motion.div
-                key={index + 2}
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 + 0.1 * index }}
-                className="group relative"
+              <div
+                className={`grid grid-cols-1 lg:grid-cols-2 gap-0 ${
+                  index % 2 === 1 ? "lg:direction-rtl" : ""
+                }`}
               >
-                <div className="aspect-[3/4] relative overflow-hidden">
+                {/* Image */}
+                <div
+                  className={`relative h-[400px] lg:h-[500px] overflow-hidden rounded-2xl m-4 lg:m-6 ${
+                    index % 2 === 1 ? "lg:order-2" : ""
+                  }`}
+                >
                   <Image
                     src={member.image}
-                    alt={member.role}
+                    alt={member.name}
                     fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                   />
-                  {/* Gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
-                  {/* Role overlay */}
-                  <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <div className="flex items-center gap-2">
-                      <span className="w-4 h-px bg-amber-500" />
-                      <p className="text-[10px] uppercase tracking-[0.2em] text-white/80">
-                        {member.role}
-                      </p>
-                    </div>
-                  </div>
-                  {/* Corner frame */}
-                  <div className="absolute top-3 left-3 w-6 h-6 border-l-2 border-t-2 border-white/20 group-hover:border-amber-500/50 transition-colors duration-500" />
-                  <div className="absolute bottom-3 right-3 w-6 h-6 border-r-2 border-b-2 border-white/20 group-hover:border-amber-500/50 transition-colors duration-500" />
+                  {/* Gradient overlay on image */}
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-r ${
+                      index % 2 === 1
+                        ? "lg:from-transparent lg:to-black/50"
+                        : "lg:from-black/50 lg:to-transparent"
+                    } from-transparent to-transparent`}
+                  />
+                  {/* Mobile gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent lg:hidden" />
                 </div>
-              </motion.div>
-            ))}
-          </div>
+
+                {/* Content */}
+                <div
+                  className={`relative flex flex-col justify-center p-8 lg:p-16 bg-zinc-950/80 rounded-2xl m-4 lg:m-6 ${
+                    index % 2 === 1 ? "lg:order-1" : ""
+                  }`}
+                >
+                  {/* Index number */}
+                  <span className="absolute top-8 right-8 text-7xl lg:text-8xl font-display text-white/5">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+
+                  {/* Role tag */}
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="w-8 h-px bg-amber-500" />
+                    <p className="text-xs uppercase tracking-[0.3em] text-amber-500">
+                      {member.role}
+                    </p>
+                  </div>
+
+                  {/* Name */}
+                  <h2 className="text-4xl lg:text-5xl font-display text-white mb-6">
+                    {member.name}
+                  </h2>
+
+                  {/* Description */}
+                  <p className="text-zinc-400 leading-relaxed mb-8 max-w-lg">
+                    {member.description}
+                  </p>
+
+                  {/* Expertise tags */}
+                  <div className="flex flex-wrap gap-2">
+                    {member.expertise.map((skill, skillIndex) => (
+                      <span
+                        key={skillIndex}
+                        className="px-4 py-2 text-xs uppercase tracking-wider text-zinc-500 border border-zinc-800 rounded-lg hover:border-amber-500/50 hover:text-amber-500 transition-colors duration-300"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+          {/* Final divider */}
+          <div className="h-px bg-gradient-to-r from-transparent via-zinc-800 to-transparent" />
         </div>
       </section>
 

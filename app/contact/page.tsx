@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
 import Footer from "../../components/Footer";
+import Nav from "../../components/Nav";
 import Particles from "../components/particles";
 
 export default function ContactPage() {
@@ -15,30 +15,7 @@ export default function ContactPage() {
         quantity={30}
       />
 
-      {/* Nav */}
-      <nav className="fixed top-8 right-8 z-50 flex gap-8">
-        <Link
-          href="/"
-          className="group relative text-xs uppercase tracking-[0.2em] text-zinc-500 hover:text-white transition-colors"
-        >
-          <span>Home</span>
-          <span className="absolute -bottom-1 left-0 w-0 h-px bg-amber-500 group-hover:w-full transition-all duration-300" />
-        </Link>
-        <Link
-          href="/team"
-          className="group relative text-xs uppercase tracking-[0.2em] text-zinc-500 hover:text-white transition-colors"
-        >
-          <span>Team</span>
-          <span className="absolute -bottom-1 left-0 w-0 h-px bg-amber-500 group-hover:w-full transition-all duration-300" />
-        </Link>
-        <Link
-          href="/projects"
-          className="group relative text-xs uppercase tracking-[0.2em] text-zinc-500 hover:text-white transition-colors"
-        >
-          <span>Projects</span>
-          <span className="absolute -bottom-1 left-0 w-0 h-px bg-amber-500 group-hover:w-full transition-all duration-300" />
-        </Link>
-      </nav>
+      <Nav />
 
       <div className="flex-1 flex items-center relative">
         {/* Decorative elements */}

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Footer from "../../../components/Footer";
+import Nav from "../../../components/Nav";
 import ProjectCard from "../../../components/ProjectCard";
 import { Project } from "../../../types";
 
@@ -22,6 +23,7 @@ export default function ProjectDetailClient({
       transition={{ duration: 0.5 }}
       className="min-h-screen flex flex-col bg-black"
     >
+      <Nav />
       <div className="flex-1">
         {/* Header */}
         <div className="px-8 md:px-16 pt-12">

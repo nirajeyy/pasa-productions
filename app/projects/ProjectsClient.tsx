@@ -1,11 +1,11 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
 import SearchBar from "../../components/SearchBar";
 import CategoryFilter from "../../components/CategoryFilter";
 import ProjectCard from "../../components/ProjectCard";
 import Footer from "../../components/Footer";
+import Nav from "../../components/Nav";
 import Particles from "../components/particles";
 import { Project } from "../../types";
 
@@ -32,21 +32,7 @@ export default function ProjectsClient({
       <div className="fixed inset-0 bg-black -z-20" />
       <Particles className="fixed inset-0 -z-10 pointer-events-none" quantity={30} />
 
-      {/* Nav */}
-      <nav className="fixed top-8 right-8 z-50 flex gap-8">
-        <Link href="/" className="group relative text-xs uppercase tracking-[0.2em] text-zinc-500 hover:text-white transition-colors">
-          <span>Home</span>
-          <span className="absolute -bottom-1 left-0 w-0 h-px bg-amber-500 group-hover:w-full transition-all duration-300" />
-        </Link>
-        <Link href="/team" className="group relative text-xs uppercase tracking-[0.2em] text-zinc-500 hover:text-white transition-colors">
-          <span>Team</span>
-          <span className="absolute -bottom-1 left-0 w-0 h-px bg-amber-500 group-hover:w-full transition-all duration-300" />
-        </Link>
-        <Link href="/contact" className="group relative text-xs uppercase tracking-[0.2em] text-zinc-500 hover:text-white transition-colors">
-          <span>Contact</span>
-          <span className="absolute -bottom-1 left-0 w-0 h-px bg-amber-500 group-hover:w-full transition-all duration-300" />
-        </Link>
-      </nav>
+      <Nav />
 
       <div className="flex-1">
         {/* Header */}
