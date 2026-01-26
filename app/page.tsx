@@ -3,7 +3,7 @@ import { Project } from "../types";
 import HomeClient from "./HomeClient";
 
 const stats = [
-  { iconName: "Award" as const, label: "Awards Won", value: 25, suffix: "+" },
+  { iconName: "Award" as const, label: "Awards Won", value: 3, suffix: "+" },
   {
     iconName: "Users" as const,
     label: "Happy Clients",
