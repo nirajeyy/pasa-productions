@@ -43,6 +43,7 @@ module.exports = {
 				"fade-left": "fade-left 3s ease-in-out forwards",
 				"fade-right": "fade-right 3s ease-in-out forwards",
 				"scroll": "scroll 30s linear infinite",
+				"marquee": "marquee 60s linear infinite",
 			},
 			keyframes: {
 				"fade-in": {
@@ -109,6 +110,14 @@ module.exports = {
 					},
 					"100%": {
 						transform: "translateX(calc(-50% - 1rem))",
+					},
+				},
+				"marquee": {
+					"0%": {
+						transform: "translateX(0)",
+					},
+					"100%": {
+						transform: "translateX(-50%)",
 					},
 				},
 			},

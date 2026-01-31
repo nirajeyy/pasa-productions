@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Particles from "./components/particles";
 import FeaturedProjects from "../components/FeaturedProjects";
 import StatsCounter from "../components/StatsCounter";
+import ClientLogos from "../components/ClientLogos";
 import Footer from "../components/Footer";
 import Nav from "../components/Nav";
 import { Project } from "../types";
@@ -339,6 +340,9 @@ export default function HomeClient({
         />
         <div className="max-w-5xl mx-auto">
           <StatsCounter stats={stats} />
+        </div>
+        <div className="max-w-6xl mx-auto">
+          <ClientLogos />
         </div>
       </section>
 
