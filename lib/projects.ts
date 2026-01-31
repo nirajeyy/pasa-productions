@@ -23,7 +23,13 @@ export async function getAllProjects(): Promise<Project[]> {
       } as Project
     })
     .filter(project => project.published)
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .sort((a, b) => {
+      // Featured projects come first
+      if (a.featured && !b.featured) return -1
+      if (!a.featured && b.featured) return 1
+      // Then sort by date within each group
+      return new Date(b.date).getTime() - new Date(a.date).getTime()
+    })
     
   return projects
 }
