@@ -58,7 +58,7 @@ const teamMembers = [
   },
   {
     name: "Dipendra Thapaliya",
-    image: "/team/team5.jpg",
+    image: "/team/team6.jpg",
     role: "Chief Gaffer",
     description:
       "With over 30 years of experience and the eldest member of the team, Deependra brings wisdom, discipline, and mastery to every set. His understanding of light and equipment goes beyond technique,it shapes mood, depth, and atmosphere creating magic on the screen. Mostly, the wise guy who lightens and enlightens the set",
@@ -66,7 +66,7 @@ const teamMembers = [
   },
   {
     name: "Sohail Shrestha",
-    image: "/team/team5.jpg",
+    image: "/team/sohail.png",
     role: "In- House Artist / Production Manager",
     description:
       "With a passion for performance since childhood, Sohail’s acting has the power to make you laugh and move you to tears. Beyond his work in front of the camera, he plays a key role in managing productions, ensuring every shoot runs smoothly and efficiently. Mostly, the all rounder who does it all",
