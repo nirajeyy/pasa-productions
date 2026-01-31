@@ -19,6 +19,7 @@ export const metadata: Metadata = {
 const categories = [
   "Commercial",
   "Documentary",
+  "Feature Movie",
   "Short Film",
   "TV Show",
   "Music Video",
@@ -32,10 +33,16 @@ interface ProjectsPageProps {
   };
 }
 
-export default async function ProjectsPage({ searchParams }: ProjectsPageProps) {
+export default async function ProjectsPage({
+  searchParams,
+}: ProjectsPageProps) {
   const { search = "", category = "", page = "1" } = searchParams;
   const currentPage = parseInt(page);
-  const { projects, totalPages } = await getProjectsByPage(currentPage, search, category);
+  const { projects, totalPages } = await getProjectsByPage(
+    currentPage,
+    search,
+    category,
+  );
 
   return (
     <ProjectsClient
