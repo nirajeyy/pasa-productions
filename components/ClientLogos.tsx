@@ -37,7 +37,7 @@ export default function ClientLogos() {
       <div className="flex items-center justify-center gap-4 mb-12">
         <span className="w-12 h-px bg-gradient-to-r from-transparent to-zinc-800" />
         <p className="text-[10px] uppercase tracking-[0.4em] text-amber-500">
-          Brands we've worked with
+          Trusted by
         </p>
         <span className="w-12 h-px bg-gradient-to-l from-transparent to-zinc-800" />
       </div>
