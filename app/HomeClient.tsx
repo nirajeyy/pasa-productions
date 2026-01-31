@@ -92,11 +92,11 @@ export default function HomeClient({
             transition={{ duration: 1, delay: 1.2 }}
             className="mt-20 flex items-center justify-center gap-4"
           >
-            <span className="w-12 h-px bg-gradient-to-r from-transparent to-zinc-700" />
-            <p className="text-zinc-600 text-xs tracking-widest uppercase">
-              Every frame tells a story
+            {/* <span className="w-12 h-px bg-gradient-to-r from-transparent to-zinc-700" /> */}
+            <p className="text-amber-500 text-xs tracking-widest uppercase">
+              ~ Crafting stories to life ~
             </p>
-            <span className="w-12 h-px bg-gradient-to-l from-transparent to-zinc-700" />
+            {/* <span className="w-12 h-px bg-gradient-to-l from-transparent to-zinc-700" /> */}
           </motion.div>
         </div>
 
@@ -221,7 +221,7 @@ export default function HomeClient({
             <div className="flex items-center gap-4 mb-6">
               <span className="w-8 h-px bg-amber-500" />
               <p className="text-xs uppercase tracking-[0.3em] text-amber-500">
-                What we do
+                What defines us
               </p>
             </div>
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-display text-white leading-[1.1]">
@@ -302,7 +302,7 @@ export default function HomeClient({
                 <div className="flex items-center gap-4 mb-6">
                   <span className="w-8 h-px bg-amber-500" />
                   <p className="text-xs uppercase tracking-[0.3em] text-amber-500">
-                    Selected work
+                    Best of ours
                   </p>
                 </div>
                 <h2 className="text-4xl md:text-6xl lg:text-7xl font-display text-white">
@@ -364,7 +364,7 @@ export default function HomeClient({
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full border border-zinc-900/50 pointer-events-none"
         />
 
-        <div className="max-w-6xl mx-auto text-center relative">
+        <div className="max-w-5xl mx-auto text-center relative">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -375,11 +375,9 @@ export default function HomeClient({
               Ready to create something extraordinary?
             </p> */}
 
-            <h2 className="text-6xl md:text-8xl lg:text-9xl font-display text-white mb-4">
-              Let's
-            </h2>
-            <h2 className="text-6xl md:text-8xl lg:text-9xl font-display text-transparent bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text mb-16">
-              talk
+            <h2 className="text-4xl md:text-4xl lg:text-4xl font-display mb-16">
+              <span className="text-white">Let's </span>
+              <span className="text-transparent bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text">connect</span>
             </h2>
 
             <Link

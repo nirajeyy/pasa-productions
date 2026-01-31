@@ -17,7 +17,10 @@ const logos = [
   { src: "/client-logos/Pulsar_dare_venture-.png", alt: "Pulsar Dare Venture" },
   { src: "/client-logos/High Ground Nepal.png", alt: "High Ground Nepal" },
   { src: "/client-logos/Presidential_.png", alt: "Presidential" },
-  { src: "/client-logos/Hidden trails adventure.png", alt: "Hidden Trails Adventure" },
+  {
+    src: "/client-logos/Hidden trails adventure.png",
+    alt: "Hidden Trails Adventure",
+  },
   { src: "/client-logos/The hidden treasure.png", alt: "The Hidden Treasure" },
   { src: "/client-logos/65af7a7773356895ccaf9262.png", alt: "Client" },
 ];
@@ -33,7 +36,7 @@ export default function ClientLogos() {
     >
       <div className="flex items-center justify-center gap-4 mb-12">
         <span className="w-12 h-px bg-gradient-to-r from-transparent to-zinc-800" />
-        <p className="text-[10px] uppercase tracking-[0.4em] text-zinc-600">
+        <p className="text-[10px] uppercase tracking-[0.4em] text-amber-500">
           Brands we've worked with
         </p>
         <span className="w-12 h-px bg-gradient-to-l from-transparent to-zinc-800" />

@@ -55,7 +55,9 @@ export default function StatsCounter({ stats }: StatsCounterProps) {
       >
         <div className="flex items-center justify-center gap-4 mb-4">
           <span className="w-8 h-px bg-zinc-800" />
-          <span className="text-[10px] uppercase tracking-[0.4em] text-zinc-600">The Numbers</span>
+          <span className="text-[10px] uppercase tracking-[0.4em] text-amber-500">
+            The Numbers
+          </span>
           <span className="w-8 h-px bg-zinc-800" />
         </div>
       </motion.div>
