@@ -25,8 +25,7 @@ export default function Footer() {
               </h3>
             </Link>
             <p className="text-xs text-zinc-600 leading-relaxed max-w-xs">
-              Every frame tells a story. We craft visual narratives that
-              resonate and inspire.
+              Crafting stories to life.
             </p>
           </div>
 
@@ -96,7 +95,6 @@ export default function Footer() {
           <p className="text-[10px] uppercase tracking-[0.2em] text-zinc-700">
             © {new Date().getFullYear()} Pasa Productions. All rights reserved.
           </p>
-          <p className="text-[10px] text-zinc-800">Crafted with passion</p>
         </motion.div>
       </div>
     </footer>

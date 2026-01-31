@@ -11,8 +11,7 @@ const teamMembers = [
     name: "Abin Bho",
     image: "/team/team1.jpg",
     role: "Director / DOP",
-    description:
-      "Following in his father’s footsteps, Abin entered filmmaking at a very young age. He transforms emotions into powerful visuals through dynamic cinematography and direction. With deep character understanding, his stories come alive and leave a lasting impact.Mostly, the visual architect who breathes characters to life",
+    description: `Following in his father's footsteps, Abin entered filmmaking at a very young age. He transforms emotions into powerful visuals through dynamic cinematography and direction. With deep character understanding, his stories come alive and leave a lasting impact.\n\nMostly, the visual architect who breathes characters to life`,
     expertise: ["Film Direction", "Cinematography", "Visual Storytelling"],
   },
   {
@@ -20,15 +19,15 @@ const teamMembers = [
     image: "/team/team2.jpg",
     role: "Creative Director / Photographer",
     description:
-      "Curious about every little thing that unfolds around, Ananta has immersed himself in the art of creation,crafting scripts, songs, and visual narratives. With a sharp eye for detail and a deep sensitivity to emotion, he transforms everyday moments into meaningful stories. Mostly, the yapper of ideas and capturer of fleeting moments",
+      "Curious about every little thing that unfolds around, Ananta has immersed himself in the art of creation,crafting scripts, songs, and visual narratives. With a sharp eye for detail and a deep sensitivity to emotion, he transforms everyday moments into meaningful stories.\n\nMostly, the yapper of ideas and capturer of fleeting moments",
     expertise: ["Screenwriting", "Photography", "Creative Direction"],
   },
   {
-    name: "Diwas Poudel",
+    name: "Diwash Poudel",
     image: "/team/team3.jpg",
     role: "Writer / Cintematographer",
     description:
-      "A nomad at heart, Diwash Poudel is constantly drawn to movement, stories, and places that shape perspective. He observes quietly, captures honestly, and believes that the best stories are often found between destinations. Mostly, the recorder that writes characters fate,",
+      "A nomad at heart, Diwash Poudel is constantly drawn to movement, stories, and places that shape perspective. He observes quietly, captures honestly, and believes that the best stories are often found between destinations.\n\nMostly, the recorder that writes characters fate,",
     expertise: ["Cinematography", "Script Development"],
   },
   {
@@ -36,7 +35,7 @@ const teamMembers = [
     image: "/team/team4.jpg",
     role: "Makeup / SFX",
     description:
-      "The youngest and the most cheerful in the team, Yasasvi steps into SFX and makeup with enthusiasm and focus. Her work contributes quietly but powerfully,adding realism and texture that allow characters to fully come alive on screen. Mostly, the cheerful lady who decides how a character will look",
+      "The youngest and the most cheerful in the team, Yasasvi steps into SFX and makeup with enthusiasm and focus. Her work contributes quietly but powerfully,adding realism and texture that allow characters to fully come alive on screen.\n\nMostly, the cheerful lady who decides how a character will look",
     expertise: [
       "Makeup Artistry",
       "Special Effects",
@@ -49,7 +48,7 @@ const teamMembers = [
     image: "/team/team5.jpg",
     role: "Project Manager",
     description:
-      "An IT geek at heart, Niraj is the backbone of organization in the team. With a sharp, structured mind, he solves problems before they become obstacles. Bridging creativity and execution, he makes sure ideas turn into action,on time. Mostly, the mechanic who fixes everything",
+      "An IT geek at heart, Niraj is the backbone of organization in the team. With a sharp, structured mind, he solves problems before they become obstacles. Bridging creativity and execution, he makes sure ideas turn into action,on time.\n\nMostly, the mechanic who fixes everything",
     expertise: [
       "Project Coordination",
       "Production Planning",
@@ -61,7 +60,7 @@ const teamMembers = [
     image: "/team/team6.jpg",
     role: "Chief Gaffer",
     description:
-      "With over 30 years of experience and the eldest member of the team, Deependra brings wisdom, discipline, and mastery to every set. His understanding of light and equipment goes beyond technique,it shapes mood, depth, and atmosphere creating magic on the screen. Mostly, the wise guy who lightens and enlightens the set",
+      "With over 30 years of experience and the eldest member of the team, Deependra brings wisdom, discipline, and mastery to every set. His understanding of light and equipment goes beyond technique,it shapes mood, depth, and atmosphere creating magic on the screen.\n\nMostly, the wise guy who lightens and enlightens the set",
     expertise: ["Lighting Design", "Set Atmosphere"],
   },
   {
@@ -69,7 +68,7 @@ const teamMembers = [
     image: "/team/sohail.png",
     role: "In- House Artist / Production Manager",
     description:
-      "With a passion for performance since childhood, Sohail’s acting has the power to make you laugh and move you to tears. Beyond his work in front of the camera, he plays a key role in managing productions, ensuring every shoot runs smoothly and efficiently. Mostly, the all rounder who does it all",
+      "With a passion for performance since childhood, Sohail's acting has the power to make you laugh and move you to tears. Beyond his work in front of the camera, he plays a key role in managing productions, ensuring every shoot runs smoothly and efficiently.\n\nMostly, the all rounder who does it all",
     expertise: ["Acting", "Production Management"],
   },
 ];
@@ -111,10 +110,10 @@ export default function TeamPage() {
               </p>
             </div>
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-display text-white leading-[1.1]">
-              The faces
+              The faces,
               <br />
               <span className="text-transparent bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text">
-                behind the lens
+                mad about films
               </span>
             </h1>
           </motion.div>
@@ -190,7 +189,7 @@ export default function TeamPage() {
                   </h2>
 
                   {/* Description */}
-                  <p className="text-zinc-400 leading-relaxed mb-8 max-w-lg">
+                  <p className="text-zinc-400 leading-relaxed mb-8 max-w-lg whitespace-pre-line">
                     {member.description}
                   </p>
 
