@@ -43,7 +43,7 @@ const services = [
   {
     title: "Sound Design & Music Production",
     description:
-      "Our in-house sound studio delivers immersive audio experiences—from recording and ADR to sound design, scoring, mixing, and mastering—crafted to complete the story.",
+      "We deliver immersive audio experiences—from recording and ADR to sound design, scoring, mixing, and mastering—crafted to complete the story.",
   },
 ];
 

@@ -64,7 +64,7 @@ export default function HomeClient({
               Est. 2010
             </span>
           </motion.div>
-
+          {/* 
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -72,7 +72,7 @@ export default function HomeClient({
             className="text-[10px] uppercase tracking-[0.5em] text-zinc-600 mb-6"
           >
             Production House
-          </motion.p>
+          </motion.p> */}
 
           {/* Main title - simple fade in */}
           <motion.h1
@@ -367,9 +367,9 @@ export default function HomeClient({
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <p className="text-xs uppercase tracking-[0.4em] text-zinc-600 mb-8">
+            {/* <p className="text-xs uppercase tracking-[0.4em] text-zinc-600 mb-8">
               Ready to create something extraordinary?
-            </p>
+            </p> */}
 
             <h2 className="text-6xl md:text-8xl lg:text-9xl font-display text-white mb-4">
               Let's
