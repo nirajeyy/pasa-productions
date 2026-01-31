@@ -42,12 +42,12 @@ export default function ClientLogos() {
         <span className="w-12 h-px bg-gradient-to-l from-transparent to-zinc-800" />
       </div>
 
-      <div className="relative overflow-hidden">
+      <div className="relative overflow-hidden group/logos">
         {/* Fade edges */}
         <div className="absolute left-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
 
-        <div className="flex w-max animate-marquee">
+        <div className="flex w-max animate-marquee group-hover/logos:[animation-play-state:paused]">
           {[...logos, ...logos].map((logo, i) => (
             <div
               key={i}

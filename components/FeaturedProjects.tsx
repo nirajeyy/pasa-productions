@@ -17,15 +17,15 @@ export default function FeaturedProjects({ projects }: FeaturedProjectsProps) {
       <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-black to-transparent z-10" />
       <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-black to-transparent z-10" />
       
-      <div 
-        className="overflow-hidden hover:pause-animation"
+      <div
+        className="overflow-hidden group/scroll"
         style={{
           cursor: 'default'
         }}
       >
         <div
           ref={scrollRef}
-          className="animate-scroll"
+          className="animate-scroll group-hover/scroll:[animation-play-state:paused]"
           style={{ 
             display: 'flex',
             gap: '1rem',
@@ -70,9 +70,6 @@ export default function FeaturedProjects({ projects }: FeaturedProjectsProps) {
           animation: scroll 120s linear infinite;
         }
 
-        .pause-animation .animate-scroll {
-          animation-play-state: paused !important;
-        }
       `}</style>
     </div>
   )
