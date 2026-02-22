@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { Suspense } from "react";
 import { getProjectsByPage } from "../../lib/projects";
 import ProjectsClient from "./ProjectsClient";
 
@@ -26,17 +27,15 @@ const categories = [
 ];
 
 interface ProjectsPageProps {
-  searchParams: {
+  searchParams: Promise<{
     search?: string;
     category?: string;
     page?: string;
-  };
+  }>;
 }
 
-export default async function ProjectsPage({
-  searchParams,
-}: ProjectsPageProps) {
-  const { search = "", category = "", page = "1" } = searchParams;
+async function ProjectsContent({ searchParams }: ProjectsPageProps) {
+  const { search = "", category = "", page = "1" } = await searchParams;
   const currentPage = parseInt(page);
   const { projects, totalPages } = await getProjectsByPage(
     currentPage,
@@ -53,5 +52,13 @@ export default async function ProjectsPage({
       category={category}
       categories={categories}
     />
+  );
+}
+
+export default async function ProjectsPage(props: ProjectsPageProps) {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-black" />}>
+      <ProjectsContent searchParams={props.searchParams} />
+    </Suspense>
   );
 }

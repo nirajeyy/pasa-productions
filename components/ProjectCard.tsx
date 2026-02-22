@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Project } from "@/types";
 import Image from "next/image";
+import { urlFor } from "@/sanity/lib/image";
 
 interface ProjectCardProps {
   project: Project;
@@ -28,7 +29,11 @@ function getYouTubeId(url: string): string | null {
 
 export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
   const videoId = project.youtubeUrl ? getYouTubeId(project.youtubeUrl) : null;
-  const thumbnailUrl = videoId
+  
+  // Use Sanity thumbnail if available, otherwise fall back to YouTube thumbnail
+  const thumbnailUrl = project.thumbnail
+    ? urlFor(project.thumbnail).width(640).height(360).url()
+    : videoId
     ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`
     : null;
 

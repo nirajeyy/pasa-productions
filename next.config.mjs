@@ -1,9 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
-	experimental: {
-		mdxRs: true,
-	},
+	pageExtensions: ["js", "jsx", "ts", "tsx"],
 	images: {
 		remotePatterns: [
 			{
@@ -14,12 +11,17 @@ const nextConfig = {
 				protocol: "https",
 				hostname: "i.ytimg.com",
 			},
+			{
+				protocol: "https",
+				hostname: "cdn.sanity.io",
+			},
 		],
 	},
 	async headers() {
 		return [
 			{
-				source: "/:path*",
+				// Apply CSP to all routes except /studio
+				source: "/((?!studio).*)",
 				headers: [
 					{
 						key: "Content-Security-Policy",
@@ -30,7 +32,7 @@ const nextConfig = {
 							"img-src 'self' data: https: blob:",
 							"font-src 'self' data:",
 							"frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com",
-							"connect-src 'self' https://www.youtube.com https://www.google-analytics.com https://cloudflareinsights.com",
+							"connect-src 'self' https://www.youtube.com https://www.google-analytics.com https://cloudflareinsights.com https://*.sanity.io",
 							"media-src 'self' https://www.youtube.com https://videos.pasaproductions.com",
 						].join("; "),
 					},
